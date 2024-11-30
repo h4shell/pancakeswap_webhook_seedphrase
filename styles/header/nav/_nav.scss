@@ -1,0 +1,425 @@
+// SCSS - nav.scss
+// TODO: nav element is here, it will be inside the header and will act like "header-wrapper.scss" class
+// * handle it as a section <nav></nav>
+@use '../../atomic/root/root' as root;
+@use '../../atomic/root/root_functions' as func;
+@use '../../atomic/root/root_mixins' as mixin;
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    display: none;
+    // border-bottom: 1px solid (root.$tertiary_link_color);
+    width: 100%;
+    // overflow: hidden;
+    top: 0;
+    z-index: 98;
+    position: fixed;
+    background-color: root.$primary_navbar_bg_color;
+    @include flexCenter;
+    justify-content: space-between;
+    .navLeft {
+        @include flexCenter;
+        margin: 0 1rem;
+
+        .navLogoFull {
+            width: 19rem;
+            height: 5rem;
+            display: none;
+
+            &:hover {
+                cursor: pointer;
+            }
+            img {
+                object-fit: cover;
+            }
+        }
+        div {
+            @include flexCenter();
+        }
+        .psHead {
+            padding: 1.2rem;
+        }
+
+        .navMenu {
+            @include flexCenter();
+            margin-left: 1rem;
+            font-size: 1.5rem;
+            display: none;
+            position: relative;
+            div {
+                padding: 1.6rem;
+                color: root.$primary_description_color;
+                border-radius: 1.6rem;
+                &:hover {
+                    background-color: root.$primary_navbar_link_hover;
+                    cursor: pointer;
+                }
+            }
+            a {
+                color: root.$primary_link_color;
+            }
+            .tradePop {
+                display: none;
+                // margin-left: 0.5rem;
+                width: 25rem;
+                height: 25rem;
+                padding: 1.5rem 0;
+                position: absolute;
+                inset: 0px auto auto 0px;
+                transform: translate(-5px, 55px);
+                background-color: root.$primary_navbar_bg_color;
+                border-radius: 2rem;
+                z-index: 5000;
+                flex-direction: column;
+                align-items: flex-start;
+                ul {
+                    width: 100%;
+                    height: func.toRem(44);
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    li {
+                        width: 100%;
+                        height: 44px;
+                        display: flex;
+                        align-items: center;
+                        padding-left: 1.5rem;
+                        &:first-of-type {
+                            border-top-left-radius: 1.2rem;
+                            border-top-right-radius: 1.2rem;
+                        }
+                        &:last-of-type {
+                            border-bottom-left-radius: 1.2rem;
+                            border-bottom-right-radius: 1.2rem;
+                        }
+                        &:hover {
+                            background-color: root.$primary_navbar_link_hover;
+                        }
+                        span {
+                            margin-left: auto;
+                            margin-right: 1rem;
+                        }
+                    }
+                }
+                &:hover {
+                    background-color: root.$primary_navbar_bg_color;
+                }
+            }
+            .earnPop {
+                @extend .tradePop;
+                height: 10rem;
+                transform: translate(60px, 55px);
+            }
+            .winPop {
+                @extend .tradePop;
+                height: 20rem;
+                transform: translate(125px, 55px);
+            }
+            .nftPop {
+                @extend .tradePop;
+                height: 15rem;
+                transform: translate(185px, 55px);
+            }
+            .pointsPop {
+                @extend .tradePop;
+                height: 30rem;
+                transform: translate(240px, 55px);
+                ul {
+                    gap: 0.3rem;
+                }
+                hr {
+                    border-top: 0.5px solid #e6e3ea;
+                }
+            }
+        }
+        .navPoints {
+            padding: 2rem !important;
+        }
+    }
+    .navRight {
+        @extend .navLeft;
+        gap: 1.6rem;
+        position: relative;
+        .navPrice {
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            display: none;
+            &:hover {
+                cursor: pointer;
+                svg {
+                    width: 29px;
+                }
+            }
+            span {
+                color: root.$primary_link_color;
+                font-weight: 500;
+            }
+        }
+        .navGlobe {
+            padding-bottom: 1rem;
+            margin-top: 1rem;
+
+            svg {
+                fill: root.$primary_link_color;
+                &:hover {
+                    opacity: 0.5;
+                    cursor: pointer !important;
+                }
+            }
+        }
+        .globePop {
+            display: none;
+            background-color: root.$primary_navbar_bg_color;
+            width: func.toRem(200px);
+            height: func.toRem(420px);
+            inset: 0px auto auto 0px;
+            transform: translate(-80px, 55.5px);
+            border-radius: 0.5rem;
+            position: absolute;
+            z-index: 2000;
+            overflow-y: scroll;
+            padding: 1rem 0;
+            margin-top: -1rem;
+            ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 1rem;
+                margin-top: 1rem;
+                li {
+                    button {
+                        color: root.$secondary_title_color;
+                        font-weight: 600;
+                        &:hover {
+                            opacity: 0.5;
+                        }
+                    }
+                }
+            }
+        }
+        .navGear {
+            @extend .navGlobe;
+            padding-bottom: 0;
+            margin-top: 0;
+        }
+        .networkSelect {
+            display: flex;
+            margin-right: 1rem;
+            background-color: root.$fourth_background_color;
+            border-radius: 1.6rem;
+            padding: 0 1.5rem 0 0;
+            gap: 1rem;
+            margin: -1rem;
+
+            p {
+                font-weight: 500;
+                color: root.$secondary_title_color;
+                display: none;
+            }
+
+            .bnbImage {
+                width: 3rem;
+            }
+            &:hover {
+                cursor: pointer;
+                opacity: 0.7;
+            }
+
+            .ethLabel {
+                display: none;
+                span {
+                    display: none;
+                }
+            }
+            .ethImage {
+                display: none;
+            }
+            .bnbLabel {
+                display: none;
+            }
+        }
+        .networkSelectPop {
+            transform: translate(50px, 37px);
+            position: absolute;
+            width: 30rem;
+            height: 20rem;
+            padding: 1.5rem 0;
+            position: absolute;
+            inset: 0px auto auto 0px;
+            background-color: root.$primary_navbar_bg_color;
+            border-radius: 2rem;
+            z-index: 5000;
+            flex-direction: column;
+            align-items: flex-start;
+            color: root.$secondary_title_color;
+            display: none;
+            ul {
+                width: 100%;
+                height: func.toRem(44);
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                hr {
+                    border-top: 0.2px solid #e6e3ea;
+                }
+                li {
+                    width: 100%;
+                    height: 44px;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 1.5rem;
+                    &:first-of-type {
+                        border-top-left-radius: 1.2rem;
+                        border-top-right-radius: 1.2rem;
+                        span {
+                            &:hover {
+                                cursor: text;
+                            }
+                        }
+                        &:hover {
+                            cursor: auto;
+                        }
+                    }
+                    &:last-of-type {
+                        border-bottom-left-radius: 1.2rem;
+                        border-bottom-right-radius: 1.2rem;
+                    }
+                    &:hover {
+                        background-color: root.$primary_navbar_link_hover;
+                        cursor: pointer;
+                    }
+                    span {
+                        margin-right: 1rem;
+                    }
+                    a {
+                        color: root.$secondary_title_color;
+                    }
+                }
+            }
+            &:hover {
+                background-color: root.$primary_navbar_bg_color;
+            }
+        }
+
+        .navBtn {
+            padding: 0.8rem 2.5rem;
+            border-radius: 2rem;
+            box-shadow: 0 1px 0 0 #0e0e2c;
+        }
+    }
+}
+
+.subMenu {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 8000;
+    .subMenuWrapper {
+        width: 100%;
+        border-bottom: 1px solid #e6e3ea;
+        overflow: hidden;
+        background-color: root.$primary_navbar_bg_color;
+        @include flexCenter;
+        justify-content: space-between;
+        padding: 0 3rem;
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 1.5rem;
+            color: root.$primary_description_color;
+            &:hover {
+                background-color: root.$primary_navbar_link_hover;
+                cursor: pointer;
+            }
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: root.$primary_link_color;
+        }
+        .earnPopSub {
+            display: none;
+            width: 55rem;
+            height: 15rem;
+            padding: 1.5rem 0;
+            position: absolute;
+            inset: 0px auto auto 0px;
+            transform: translate(60px, -151px);
+            background-color: root.$primary_navbar_bg_color;
+            border-radius: 2rem;
+            z-index: 5000;
+            flex-direction: column;
+            align-items: flex-start;
+            ul {
+                width: 100%;
+                height: func.toRem(44);
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                li {
+                    width: 100%;
+                    height: 44px;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 1.5rem;
+                    &:first-of-type {
+                        border-top-left-radius: 1.2rem;
+                        border-top-right-radius: 1.2rem;
+                    }
+                    &:last-of-type {
+                        border-bottom-left-radius: 1.2rem;
+                        border-bottom-right-radius: 1.2rem;
+                    }
+                    &:hover {
+                        background-color: root.$primary_navbar_link_hover;
+                    }
+                    span {
+                        margin-left: auto;
+                        margin-right: 1rem;
+                    }
+                }
+            }
+            &:hover {
+                background-color: root.$primary_navbar_bg_color;
+            }
+        }
+        .winPopSub {
+            @extend .earnPopSub;
+            transform: translate(90px, -201px);
+            width: 60rem;
+            height: 20rem;
+        }
+        .nftPopSub {
+            @extend .earnPopSub;
+            transform: translate(100px, -151px);
+        }
+        .pointsPopSub {
+            @extend .earnPopSub;
+            transform: translate(100px, -301px);
+            width: 70rem;
+            height: 30rem;
+            hr {
+                border-top: 0.5px solid #e6e3ea;
+            }
+        }
+    }
+}
+
+.fullScreenPop {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: root.$fullScreenPop;
+    z-index: 5000;
+    opacity: 0.3;
+}

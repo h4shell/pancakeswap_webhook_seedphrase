@@ -1,0 +1,240 @@
+@use '../atomic/root/root' as root;
+
+.walletModalBackground {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 99;
+
+    .walletModal {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 40rem;
+        z-index: 1000000000;
+        border-radius: 2.5rem;
+        &-b1 {
+            display: flex;
+            width: 100%;
+            border-radius: inherit;
+            background-color: root.$modal-bg-2;
+            &-a {
+                padding: 2rem;
+                display: flex;
+                background-color: root.$modal-bg-1;
+                border-radius: inherit;
+                width: 100%;
+                height: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 3rem;
+
+                &__title {
+                    max-width: fit-content;
+                    font-size: 2rem;
+                    color: root.$swap_full_logo_color;
+                }
+
+                &__description {
+                    max-width: 50rem;
+                    color: root.$primary_description_color;
+                }
+
+                &-imgs {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 5rem;
+                    &__img1 {
+                        width: 6rem;
+                        height: 6rem;
+                    }
+
+                    &__img2 {
+                        width: 6rem;
+                        height: 6rem;
+                    }
+
+                    &__img3 {
+                        width: 6rem;
+                        height: 6rem;
+                    }
+
+                    &__img4 {
+                        width: 6rem;
+                        height: 6rem;
+                    }
+
+                    &__img5 {
+                        width: 6rem;
+                        height: 6rem;
+                    }
+                }
+            }
+
+            &-b {
+                width: 50%;
+                display: none;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 4rem;
+
+                &__title {
+                    font-size: 2rem;
+                    color: root.$primary_title_color;
+                }
+
+                &__img {
+                    width: 20rem;
+                    height: 20rem;
+                }
+
+                &__link {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    color: root.$swap_buttons_bg_color;
+                }
+            }
+        }
+    }
+}
+
+.footer-space {
+    width: 100%;
+    height: 6rem;
+    background-color: root.$eighth_background_color;
+}
+
+.settings {
+    background-color: root.$primary_settings_bg_color;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 11000;
+    &-window {
+        position: fixed;
+        bottom: 0;
+        background-color: root.$primary_navbar_bg_color;
+        width: 100vw;
+        height: 40vh;
+        border-top-left-radius: 4rem;
+        border-top-right-radius: 4rem;
+        color: root.$secondary_title_color;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    &-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2.5rem 3rem;
+        h1 {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+        svg {
+            color: root.$quaternary_description_color;
+            &:hover {
+                cursor: pointer;
+                opacity: 0.5;
+            }
+        }
+    }
+    hr {
+        margin: -2rem 0;
+        opacity: 0.3;
+        color: root.$sixth_background_color;
+    }
+    &-title {
+        padding: 1rem 3rem;
+        h2 {
+            font-size: 1.9rem;
+            font-weight: 500;
+            color: root.$seventh_background_color;
+        }
+    }
+    &-mode {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 4rem 1rem 3rem;
+        .themeToggle {
+            position: relative;
+            width: 50px;
+            label {
+                position: absolute;
+                width: 100%;
+                height: 25px;
+                background-color: #28292c;
+                border-radius: 50px;
+                cursor: pointer;
+            }
+
+            input {
+                position: absolute;
+                display: none;
+            }
+
+            .slider {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 50px;
+                transition: 0.3s;
+            }
+
+            input:checked ~ .slider {
+                background-color: #d8dbe0;
+            }
+
+            .slider::before {
+                content: '';
+                position: absolute;
+                top: 3px;
+                left: 4px;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                box-shadow: inset 7px -1px 0px 0px #d8dbe0;
+                background-color: #28292c;
+                transition: 0.3s;
+            }
+
+            input:checked ~ .slider::before {
+                transform: translateX(28px);
+                background-color: #28292c;
+                box-shadow: none;
+            }
+        }
+    }
+    &-footer {
+        display: flex;
+        padding: 1rem 4rem 1rem 3rem;
+        .sub-tog {
+            margin-left: auto;
+        }
+        svg {
+            margin-left: 2px;
+            opacity: 0.5;
+            &:hover {
+                opacity: 0.3;
+            }
+        }
+    }
+}
+
+.d--flex {
+    display: flex;
+}

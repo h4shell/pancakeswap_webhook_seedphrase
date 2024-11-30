@@ -1,0 +1,103 @@
+// SCSS - section6-wrapper.scss
+// !wrapper <div class="wrapper-name"></div>
+@use '../atomic/root/root' as root;
+@use '../atomic/root/root_functions' as func;
+@use '../atomic/root/root_mixins' as mixin;
+.sect6__main {
+    max-width: 102rem;
+    padding: func.toRem(48px) 0;
+
+    &__cake {
+        display: flex;
+        align-items: center;
+        &__text {
+            display: flex;
+            flex-flow: row wrap;
+            gap: func.toRem(20px);
+
+            .sect6__btn {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+
+                a {
+                    color: root.$primary_buttons_bg_color;
+                }
+            }
+        }
+        &__text {
+            width: 100%;
+        }
+        &__h2 {
+            color: root.$secondary_title_color;
+            font-size: 4rem;
+            font-weight: 600;
+            line-height: 1.1;
+            span {
+                color: root.$primary_title_color;
+            }
+        }
+
+        &__img-wrap {
+            display: flex;
+            justify-content: end;
+            width: 100%;
+            &__picture {
+                position: relative;
+                width: 48rem;
+                height: 48rem;
+
+                & source {
+                    position: absolute;
+                }
+
+                & img {
+                    position: absolute;
+                }
+                .cake-img {
+                    animation-delay: 1000ms;
+                    z-index: 3;
+                }
+
+                .cake-right-img {
+                    animation-delay: 2000ms;
+                    z-index: 4;
+                }
+
+                .cake-top-img {
+                    animation-delay: 3000ms;
+                }
+            }
+        }
+
+        &__desc p {
+            color: root.$primary_description_color;
+        }
+    }
+
+    &__details {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: func.toRem(32px);
+
+        &__para {
+            p:first-of-type {
+                color: root.$icons_color;
+                font-weight: 400;
+                line-height: 1.5;
+            }
+            :last-child {
+                color: root.$secondary_title_color;
+                font-size: func.toRem(24px);
+                font-weight: 600;
+                line-height: 1.1;
+            }
+        }
+
+        &__para:not(:nth-child(3n)) {
+            border-right: 1px solid root.$icons_color;
+        }
+        &__para:not(:first-of-type) {
+        }
+    }
+}

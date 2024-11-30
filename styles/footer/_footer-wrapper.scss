@@ -1,0 +1,262 @@
+// SCSS - footer-wrapper.scss
+// !wrapper <div class="wrapper-name"></div>
+@use '../atomic/root/root' as root;
+@use '../atomic/root/root_functions' as func;
+@use '../atomic/root/root_mixins' as mixin;
+.footer-wrapper {
+    flex-grow: 1;
+    max-width: 100rem;
+    padding: root.$footer-wrapperPadding;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    &-head {
+        display: flex;
+        align-items: center;
+        height: 4rem;
+    }
+
+    &-head-2 {
+        display: none;
+    }
+
+    &__logo {
+        width: 18rem;
+    }
+
+    &-specs {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    &-b1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            &__logo {
+                width: 2.5rem;
+            }
+
+            &__num {
+                font-weight: 700;
+                color: root.$primary_description_color;
+            }
+        }
+
+        &__button {
+            padding: 1rem 2rem;
+            border-radius: 10rem;
+        }
+    }
+
+    &-b2 {
+        display: flex;
+        gap: 2rem;
+        position: relative;
+        &-switch {
+            padding: 0.5rem;
+            display: flex;
+            background-color: root.$primary_description_color;
+            border-radius: 2rem;
+            .themeToggle {
+                position: relative;
+                width: 50px;
+                label {
+                    position: absolute;
+                    width: 100%;
+                    height: 25px;
+                    background-color: #28292c;
+                    border-radius: 50px;
+                    cursor: pointer;
+                }
+
+                input {
+                    position: absolute;
+                    display: none;
+                }
+
+                .slider {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50px;
+                    transition: 0.3s;
+                }
+
+                input:checked ~ .slider {
+                    background-color: #d8dbe0;
+                }
+
+                .slider::before {
+                    content: '';
+                    position: absolute;
+                    top: 3px;
+                    left: 4px;
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 50%;
+                    box-shadow: inset 7px -1px 0px 0px #d8dbe0;
+                    background-color: #28292c;
+                    transition: 0.3s;
+                }
+
+                input:checked ~ .slider::before {
+                    transform: translateX(28px);
+                    background-color: #28292c;
+                    box-shadow: none;
+                }
+            }
+        }
+
+        &__sun {
+            fill: root.$tertiary_description_color;
+        }
+
+        &__moon {
+        }
+
+        &-lg {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        &__globe {
+            fill: root.$primary_description_color;
+        }
+
+        &__lg {
+            color: root.$primary_description_color;
+        }
+    }
+
+    &-anchors {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    &__about {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        li:first-child {
+            color: root.$primary_title_color;
+        }
+
+        li > a {
+            color: root.$tertiary_link_color;
+        }
+
+        li > a:hover {
+            text-decoration: underline
+                root.$secondary_link_decoration_hover_color;
+        }
+
+        li:nth-child(2) > a {
+            color: root.$quaternary_link_color;
+        }
+    }
+
+    &__help {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        li:first-child {
+            color: root.$primary_title_color;
+        }
+
+        li > a {
+            color: root.$tertiary_link_color;
+        }
+
+        li > a:hover {
+            text-decoration: underline
+                root.$secondary_link_decoration_hover_color;
+        }
+    }
+
+    &__developers {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        li:first-child {
+            color: root.$primary_title_color;
+        }
+
+        li > a {
+            color: root.$tertiary_link_color;
+        }
+
+        li > a:hover {
+            text-decoration: underline
+                root.$secondary_link_decoration_hover_color;
+        }
+    }
+
+    &__head {
+        display: none;
+    }
+
+    &-icons {
+        display: flex;
+        gap: 2.5rem;
+
+        > li > a > svg {
+            fill: root.$icons_color;
+            transition-duration: 500ms;
+        }
+
+        > li > a > svg:hover {
+            fill: root.$icons_hover_color;
+        }
+    }
+    .navGlobe2 {
+        padding-bottom: 1rem;
+        margin-top: 1rem;
+        svg {
+            fill: root.$primary_link_color;
+            &:hover {
+                opacity: 0.5;
+                cursor: pointer !important;
+            }
+        }
+    }
+    .globePop2 {
+        display: none;
+        background-color: root.$primary_navbar_bg_color;
+        width: func.toRem(200px);
+        height: func.toRem(420px);
+        inset: 0px auto auto 0px;
+        transform: translate(20px, -400px);
+        border-radius: 0.5rem;
+        position: absolute;
+        z-index: 2000;
+        overflow-y: scroll;
+        padding: 1rem 0;
+        margin-top: -1rem;
+        ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+            margin-top: 1rem;
+            li {
+                button {
+                    color: root.$secondary_title_color;
+                    font-weight: 600;
+                    &:hover {
+                        opacity: 0.5;
+                    }
+                }
+            }
+        }
+    }
+}

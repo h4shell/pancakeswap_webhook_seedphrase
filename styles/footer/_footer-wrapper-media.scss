@@ -1,0 +1,50 @@
+// SCSS - footer-wrapper-media.scss
+@use '../atomic/root/root' as root;
+@use '../atomic/root/root_functions' as func;
+@use '../atomic/root/root_mixins' as mixin;
+
+@media only screen and (min-width: 700px) {
+    .footer-wrapper {
+        &-head {
+            display: none;
+        }
+
+        &__head {
+            display: block;
+        }
+
+        &-specs {
+            order: 10;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        &-b1 {
+            gap: 2rem;
+            order: 2;
+        }
+
+        &-b2 {
+            order: 1;
+        }
+
+        &-anchors {
+            justify-content: space-between;
+            flex-direction: row;
+        }
+    }
+}
+
+.footer-wrapper {
+    .globePop2 {
+        @include mixin.medium {
+            transform: translate3d(400px, 55.5px, 0px);
+        }
+        @include mixin.large {
+            transform: translate3d(450px, 55.5px, 0px);
+        }
+        @include mixin.larger {
+            transform: translate3d(100px, 10px, 0px);
+        }
+    }
+}
